@@ -1,0 +1,289 @@
+---
+rules_directory: ./rules.d
+
+rules:
+- name: Remove formatting
+  type: regex
+  pattern: '</?(font|b|i|u).*?>'
+  action: replace
+  value: ""
+
+- name: Remove ASS formatting
+  type: regex
+  pattern: '{\\[a-zA-Z0-9\\\-&.,()]+}'
+  action: replace
+  value: ""
+
+- name: Remove WEBVTT STYLE lines from Mandelorian
+  type: regex
+  pattern: 'WEBVTT\nSTYLE\n:: cue'
+  action: replace
+  value: ""
+
+- name: Remove Season & Episode, Episode title, etc
+  type: regex
+  pattern: '(?i)(\*.*\*\n)?(Season \d{1,4} Episode \d{1,4}(\n)?|Episode Title( )?:( )?.*(\n)?|Aired on: .*(\n)?)+(\".*\")?'
+  action: replace
+  value: ""
+
+- name: Remove Episode title & Aired on
+  type: regex
+  pattern: '(?i)Episode Title:.*\nAired on: .*'
+  action: replace
+  value: ""
+
+- name: Remove some well-known subtitle websites
+  type: regex
+  pattern: '(?i)(www\.)?(addic7ed\.com|tvsubtitles\.net|opensubtitles\.(com|org)|psarips\.com|podnapisi\.net|isubdb\.com|TUSUBTITULO\.com)'
+  action: delete
+
+- name: Remove some well-known download sites
+  type: regex
+  pattern: '(?i)(rarbg)'
+  action: delete
+
+- name: Remove sync and corrected by...
+  type: regex
+  pattern: '(?i)sync(h)?(ed)?,?( and| &)?( corrected)?( by| -->)(\n| )?(\w+)?'
+  action: delete
+
+- name: Remove subtitles - ripped and hacked by ...
+  type: regex
+  pattern: '(?i)Subtitles - Ripped (\(and hacked\))?\nby .*'
+  action: delete
+
+- name: Remove subtitles by ...
+  type: regex
+  pattern: '(?i)^Subtitle(s|d)? by'
+  action: delete
+
+- name: Remove syncronized by ...
+  type: regex
+  pattern: '(?i)^Synchronized by'
+  action: delete
+
+- name: Remove ripped by ...
+  type: regex
+  pattern: '(?i)^Rip(ped)? by'
+  action: delete
+
+- name: Remove edited by ...
+  type: regex
+  pattern: '(?i)^Edit(s|ed) by'
+  action: delete
+
+- name: Remove corrected by ...
+  type: regex
+  pattern: '(?i)^Correct(ions|ed) by'
+  action: delete
+
+- name: Remove sync corrected by ...
+  type: regex
+  pattern: '(?i)^Sync correct(ions|ed) by'
+  action: delete
+
+- name: Remove provided by explosiveskull
+  type: regex
+  pattern: '(?i)^Provided by explosiveskull'
+  action: delete
+
+- name: Remove for subtitling services
+  type: regex
+  pattern: '(?i)^For subtitling services'
+  action: delete
+
+- name: Remove captioned by ...
+  type: regex
+  pattern: '(?i)^Caption(s|ed|ing)( sponsor(ed|ing))? by'
+  action: delete
+
+- name: Remove "and Toyota" second message to captioned by
+  type: regex
+  pattern: '(?i)^and Toyota\.$'
+  action: delete
+
+- name: Remove GOM Player
+  type: regex
+  pattern: '(?i)GOM Player'
+  action: delete
+
+- name: Remove ads by domain
+  type: regex
+  pattern: '(?i)((www.)?mytotal.tv|ServerPartDeals.com|streamingsites.com|(www.)?flixify.app|FilthyRichFutures.com)'
+  action: delete
+
+- name: Remove OpenSubtitles ad links
+  type: regex
+  pattern: '(?i)osdb.link'
+  action: delete
+
+- name: Remove &gt;
+  type: regex
+  pattern: '(?i)&gt;'
+  action: replace
+  value: ""
+
+- name: Remove &Amp
+  type: regex
+  pattern: '(?i)&Amp(?!;)'
+  action: replace
+  value: ""
+
+- name: Replace &amp;
+  type: regex
+  pattern: '(?i)&amp;'
+  action: replace
+  value: "&"
+
+- name: "Remove 'a(tm)a' - from Rightous Gemstones TV show"
+  type: regex
+  pattern: 'a\(tm\)a'
+  action: replace
+  value: ""
+
+- name: Fix A mm it from Moon Knight
+  type: regex
+  pattern: 'A mm it'
+  action: replace
+  value: Ammit
+
+- name: Remove double (or more) asterisk
+  type: regex
+  pattern: '\*{2,}'
+  action: replace
+  value: ""
+
+- name: Remove ellipses at start of a line
+  type: regex
+  pattern: '^([-]?)[.]+'
+  action: replace
+  value: '\1'
+
+- name: Fix lack of space after comma
+  type: regex
+  pattern: ',([A-Za-z])'
+  action: replace
+  value: ', \1'
+
+# Matches things like .pdfs, which shouldn't have a space added
+- name: Fix lack of space after a period
+  type: regex
+  pattern: '([a-z][.?!]{1,3})([A-Z][a-z])'
+  action: replace
+  value: '\1 \2'
+
+- name: Insert newline for .-Words
+  type: regex
+  pattern: '([.?!])-([A-Za-z])'
+  action: replace
+  value: '\1\n- \2'
+
+- name: Fix lack of space after closing square bracket
+  type: regex
+  pattern: '](\w)'
+  action: replace
+  value: '] \1'
+
+# Breaks dates and numbers separated by commas
+#- name: Fix space around comma when a large number
+#  type: regex
+#  pattern: '(\d), (\d)'
+#  action: replace
+#  value: '\1,\2'
+
+- name: Fix double hyphen separated
+  type: regex
+  pattern: '- -'
+  action: replace
+  value: '-'
+
+- name: Fix hyphens on same line
+  type: regex
+  pattern: ' - '
+  action: replace
+  value: '\n- '
+
+- name: Fix hyphens
+  type: regex
+  pattern: '[-]{3,}'
+  action: replace
+  value: '--'
+
+- name: Remove lines with only music symbols
+  type: regex
+  pattern: '(^|\n)-?[♪ ]+$'
+  action: replace
+  value: ""
+
+- name: Remove lines with only an underscore
+  type: regex
+  pattern: '^(- )?_+'
+  action: replace
+  value: ""
+
+- name: Remove unnecessary periods
+  type: regex
+  pattern: '([?!:])[.]+'
+  action: replace
+  value: '\1'
+
+#- name: Remove spaces before periods
+#  type: regex
+#  pattern: '\s+\.'
+#  action: replace
+#  value: "."
+
+- name: Remove extra spaces
+  type: regex
+  pattern: '[\s]{2,}'
+  action: replace
+  value: " "
+
+- name: Remove spaces at the beginning of a line
+  type: regex
+  pattern: '^\s+'
+  action: replace
+  value: ""
+
+- name: Remove spaces at the end of a line
+  type: regex
+  pattern: '\s+$'
+  action: replace
+  value: ""
+
+#- name: Fix hyphen music note on it's own line
+#  type: regex
+#  pattern: '^(‐|-) ♪\n'
+#  action: replace
+#  value: "- ♪ "
+
+#- name: Remove hyphen before music note
+#  type: regex
+#  pattern: '(‐|-) ♪'
+#  action: replace
+#  value: "♪"
+
+- name: Fix extra hyphen beginning
+  type: regex
+  pattern: '^(‐|-)\n(‐|-)'
+  action: replace
+  value: "- "
+
+- name: Remove extra hyphen end
+  type: regex
+  pattern: '\n(‐|-)\s*$'
+  action: replace
+  value: ""
+
+- name: Fix empty hyphen beginning part two
+  type: regex
+  pattern: '^(‐|-)\n'
+  action: replace
+  value: "- "
+
+- name: Fix start of line hyphen space
+  type: regex
+  pattern: '(^|\n)(-{1,2})([^ -])'
+  action: replace
+  value: "\\1\\2 \\3"
+
