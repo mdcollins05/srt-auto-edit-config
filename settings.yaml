@@ -34,7 +34,7 @@ rules:
 
 - name: Remove some well-known subtitle websites
   type: regex
-  pattern: '(?i)(www\.)?(addic7ed\.com|tvsubtitles\.net|opensubtitles\.(com|org)|psarips\.com|podnapisi\.net|isubdb\.com|TUSUBTITULO\.com)'
+  pattern: '(?i)(www\.)?(addic7ed\.com|tvsubtitles\.net|opensubtitles\.(com|org)|psarips\.com|podnapisi\.net|isubdb\.com|TUSUBTITULO\.com|YTS\.MX)'
   action: delete
 
 - name: Remove some well-known download sites
