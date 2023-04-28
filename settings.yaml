@@ -42,6 +42,11 @@ rules:
   pattern: '(?i)(rarbg)'
   action: delete
 
+- name: Remove s.ub by su.b .T
+  type: regex
+  pattern: '(?i)^s\.ub by su\.b \.T$'
+  action: delete
+
 - name: Remove sync and corrected by...
   type: regex
   pattern: '(?i)sync(h)?(ed)?,?( and| &)?( corrected)?( by| -->)(\n| )?(\w+)?'
