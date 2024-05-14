@@ -69,7 +69,7 @@ rules:
 
 - name: Remove syncronized by ...
   type: regex
-  pattern: '(?i)^Synchronized by'
+  pattern: '(?i)^(Revised and )?Synchronized by'
   action: delete
 
 - name: Remove ripped by ...
