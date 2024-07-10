@@ -131,19 +131,19 @@ rules:
   type: regex
   pattern: '(?i)&gt;'
   action: replace
-  value: ""
+  value: ''
 
 - name: Remove &Amp
   type: regex
   pattern: '(?i)&Amp(?!;)'
   action: replace
-  value: ""
+  value: ''
 
 - name: Replace &amp;
   type: regex
   pattern: '(?i)&amp;'
   action: replace
-  value: "&"
+  value: '&'
 
 - name: "Remove 'a(tm)a' - from Rightous Gemstones TV show"
   type: regex
@@ -175,10 +175,9 @@ rules:
   action: replace
   value: ', \1'
 
-# Matches things like .pdfs, which shouldn't have a space added
-- name: Fix lack of space after a period
+- name: Fix lack of space after a period when first character is capitalized
   type: regex
-  pattern: '([a-z][.?!]{1,3})([A-Z][a-z])'
+  pattern: '([a-z][.?!]{1,3})([A-Z])'
   action: replace
   value: '\1 \2'
 
@@ -223,13 +222,13 @@ rules:
   type: regex
   pattern: '(^|\n)-?[♪ ]+$'
   action: replace
-  value: ""
+  value: ''
 
 - name: Remove lines with only an underscore
   type: regex
   pattern: '^(- )?_+'
   action: replace
-  value: ""
+  value: ''
 
 - name: Remove unnecessary periods
   type: regex
@@ -241,59 +240,64 @@ rules:
 #  type: regex
 #  pattern: '\s+\.'
 #  action: replace
-#  value: "."
+#  value: '.'
 
 - name: Remove extra spaces
   type: regex
   pattern: '[\s]{2,}'
   action: replace
-  value: " "
+  value: ' '
 
 - name: Remove spaces at the beginning of a line
   type: regex
   pattern: '^\s+'
   action: replace
-  value: ""
+  value: ''
 
 - name: Remove spaces at the end of a line
   type: regex
   pattern: '\s+$'
   action: replace
-  value: ""
+  value: ''
 
 #- name: Fix hyphen music note on it's own line
 #  type: regex
 #  pattern: '^(‐|-) ♪\n'
 #  action: replace
-#  value: "- ♪ "
+#  value: '- ♪ '
 
 #- name: Remove hyphen before music note
 #  type: regex
 #  pattern: '(‐|-) ♪'
 #  action: replace
-#  value: "♪"
+#  value: '♪'
 
 - name: Fix extra hyphen beginning
   type: regex
   pattern: '^(‐|-)\n(‐|-)'
   action: replace
-  value: "- "
+  value: '- '
 
 - name: Remove extra hyphen end
   type: regex
   pattern: '\n(‐|-)\s*$'
   action: replace
-  value: ""
+  value: ''
 
 - name: Fix empty hyphen beginning part two
   type: regex
   pattern: '^(‐|-)\n'
   action: replace
-  value: "- "
+  value: '- '
 
 - name: Fix start of line hyphen space
   type: regex
   pattern: '(^|\n)(-{1,2})([^ -])'
   action: replace
-  value: "\\1\\2 \\3"
+  value: '\1\2 \3'
 
+- name: Fix Supacell (2024) lyric lines
+  type: regex
+  patern: '^(\*(?:.*\n?)*)d$'
+  action: replace
+  value: '\1*'
