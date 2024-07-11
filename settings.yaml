@@ -2,6 +2,7 @@
 rules_directory: ./rules.d
 
 rules:
+# Annoyances like formatting and various advertising
 - name: Remove formatting
   type: regex
   pattern: '</?(font|b|i|u).*?>'
@@ -127,6 +128,29 @@ rules:
   pattern: '(?i)osdb.link'
   action: delete
 
+# Show specific corrections
+- name: "Remove 'a(tm)a' - from Rightous Gemstones TV show"
+  type: regex
+  pattern: 'a\(tm\)a'
+  action: replace
+  value: ""
+  only_if_match: '*/The Righteous Gemstones*'
+
+- name: Fix A mm it from Moon Knight
+  type: regex
+  pattern: 'A mm it'
+  action: replace
+  value: Ammit
+  only_if_match: '*/Moon Knight*'
+
+- name: Fix Supacell (2024) lyric lines
+  type: regex
+  pattern: '^(?:\*|d) (.*\n?.*) d$'
+  action: replace
+  value: '* \1 *'
+  only_if_match: '*/Supacell*'
+
+# General corrections
 - name: Remove &gt;
   type: regex
   pattern: '(?i)&gt;'
@@ -144,18 +168,6 @@ rules:
   pattern: '(?i)&amp;'
   action: replace
   value: '&'
-
-- name: "Remove 'a(tm)a' - from Rightous Gemstones TV show"
-  type: regex
-  pattern: 'a\(tm\)a'
-  action: replace
-  value: ""
-
-- name: Fix A mm it from Moon Knight
-  type: regex
-  pattern: 'A mm it'
-  action: replace
-  value: Ammit
 
 - name: Remove double (or more) asterisk
   type: regex
@@ -295,9 +307,3 @@ rules:
   pattern: '(^|\n)(-{1,2})([^ -])'
   action: replace
   value: '\1\2 \3'
-
-- name: Fix Supacell (2024) lyric lines
-  type: regex
-  patern: '^(\*(?:.*\n?)*)d$'
-  action: replace
-  value: '\1*'
