@@ -1,5 +1,5 @@
 ---
-rules_directory: ./rules.d
+rules_directory: ./srtautoedit.rules.d
 
 rules:
 # Annoyances like formatting and various advertising
@@ -35,7 +35,7 @@ rules:
 
 - name: Remove some well-known subtitle websites
   type: regex
-  pattern: '(?i)(www\.)?(addic7ed\.com|tvsubtitles\.net|opensubtitles\.(com|org)|psarips\.com|podnapisi\.net|isubdb\.com|TUSUBTITULO\.com|YTS\.MX|subscene\.com)'
+  pattern: '(?i)(www\.)?(addic7ed\.com|tvsubtitles\.net|opensubtitles\.(com|org)|psarips\.com|podnapisi\.net|isubdb\.com|TUSUBTITULO\.com|YTS\.MX|subscene\.com|moviesubtitles\.org)'
   action: delete
 
 - name: Remove some well-known download sites
@@ -96,6 +96,11 @@ rules:
 - name: Remove provided by explosiveskull
   type: regex
   pattern: '(?i)^Provided by explosiveskull'
+  action: delete
+
+- name: Remove Uploaded by lankafile
+  type: regex
+  pattern: '(?i)^Uploaded by www.lankafile.com'
   action: delete
 
 - name: Remove for subtitling services
