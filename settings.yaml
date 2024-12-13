@@ -115,7 +115,7 @@ rules:
 
 - name: Remove "and Toyota" second message to captioned by
   type: regex
-  pattern: '(?i)^and Toyota\.$'
+  pattern: '(?i)^and Toyota(\.)?$'
   action: delete
 
 - name: Remove GOM Player
