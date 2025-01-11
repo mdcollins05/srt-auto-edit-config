@@ -186,6 +186,12 @@ rules:
   action: replace
   value: '\1'
 
+- name: Fix weird dual single quotes
+  type: regex
+  pattern: "'’"
+  action: replace
+  value: "'"
+
 - name: Fix lack of space after comma
   type: regex
   pattern: ',([A-Za-z])'
