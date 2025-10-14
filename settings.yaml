@@ -50,7 +50,7 @@ rules:
 
 - name: Remove sync and corrected by...
   type: regex
-  pattern: '(?i)sync(h)?(ed)?,?( and| &)?( corrected)?( by| -->)(\n| )?(\w+)?'
+  pattern: '(?i)sync(h)?(ed)?,?( and| &)?( correct(ed|ions))?( by| -->)?(\n| )?(\w+)?'
   action: delete
 
 - name: Remove subtitles - ripped and hacked by ...
