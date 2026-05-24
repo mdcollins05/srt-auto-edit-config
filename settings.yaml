@@ -2,7 +2,7 @@
 rules_directory: ./srtautoedit.rules.d
 
 rules:
-# Annoyances like formatting and various advertising
+# Formatting cleanup
 - name: Remove formatting
   type: regex
   pattern: '</?(font|b|i|u).*?>'
@@ -33,6 +33,7 @@ rules:
   action: replace
   value: ""
 
+# Ad and credit removal
 - name: Remove some well-known subtitle websites
   type: regex
   pattern: '(?i)(www\.)?(addic7ed\.com|tvsubtitles\.net|opensubtitles\.(com|org)|psarips\.com|podnapisi\.net|isubdb\.com|TUSUBTITULO\.com|YTS\.MX|subscene\.com|moviesubtitles\.org)'
@@ -50,7 +51,7 @@ rules:
 
 - name: Remove sync and corrected by...
   type: regex
-  pattern: '(?i)sync(h)?(ed)?,?( and| &)?( correct(ed|ions))?( by| -->)?(\n| )?(\w+)?'
+  pattern: '(?i)\bsync(h)?(ed)?,?( and| &)?( correct(ed|ions))?( by| -->)?(\n| )?(\w+)?'
   action: delete
 
 - name: Remove subtitles - ripped and hacked by ...
@@ -154,6 +155,118 @@ rules:
   action: replace
   value: '* \1 *'
   only_if_match: '*/Supacell*'
+
+- name: Fix missing space before 'Enterprise' in Strange New Worlds
+  type: regex
+  pattern: '(\w)(Enterprise)'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space after 'Enterprise' in Strange New Worlds
+  type: regex
+  pattern: '(Enterprise)(\w)'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing "Trek:" in previously-on recap in Strange New Worlds
+  type: regex
+  pattern: 'Star Strange New Worlds'
+  action: replace
+  value: 'Star Trek: Strange New Worlds'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space between "Previously on" and "Star Trek:" in Strange New Worlds
+  type: regex
+  pattern: 'Previously on(Star Trek:)'
+  action: replace
+  value: 'Previously on\n\1'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix ORTEGA speaker label to ORTEGAS in Strange New Worlds
+  type: regex
+  pattern: '^ORTEGA:$'
+  action: replace
+  value: 'ORTEGAS:'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing colon in show title recap in Strange New Worlds
+  type: regex
+  pattern: 'Star Trek Strange New Worlds'
+  action: replace
+  value: 'Star Trek: Strange New Worlds'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space after "the" before ship names in Strange New Worlds
+  type: regex
+  pattern: '\b([Tt]he)([A-Z])'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space after possessive apostrophe-s in Strange New Worlds
+  type: regex
+  pattern: '''s([a-z])'
+  action: replace
+  value: '''s \1'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space before M'hanit in Strange New Worlds
+  type: regex
+  pattern: '(\w)(M''hanit)'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space after M'hanit in Strange New Worlds
+  type: regex
+  pattern: '(M''hanit)(\w)'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space before 'Cayuga' in Strange New Worlds
+  type: regex
+  pattern: '(\w)(Cayuga)'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space after 'Cayuga' in Strange New Worlds
+  type: regex
+  pattern: '(Cayuga)(\w)'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space before 'Farragut' in Strange New Worlds
+  type: regex
+  pattern: '(\w)(Farragut)'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space after 'Farragut' in Strange New Worlds
+  type: regex
+  pattern: '(Farragut)(\w)'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space before 'Stardiver' in Strange New Worlds
+  type: regex
+  pattern: '(\w)(Stardiver)'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
+
+- name: Fix missing space after 'Stardiver' in Strange New Worlds
+  type: regex
+  pattern: '(Stardiver)(\w)'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Strange New Worlds*'
 
 # General corrections
 - name: Remove &gt;
