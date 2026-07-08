@@ -34,9 +34,15 @@ rules:
   value: ""
 
 # Ad and credit removal
+- name: Strip bare MY-SUBS.COM header glued to dialogue cue
+  type: regex
+  pattern: '(?i)^(www\.)?my-subs\.com$'
+  action: replace
+  value: ''
+
 - name: Remove some well-known subtitle websites
   type: regex
-  pattern: '(?i)(www\.)?(addic7ed\.com|tvsubtitles\.net|opensubtitles\.(com|org)|psarips\.com|podnapisi\.net|isubdb\.com|TUSUBTITULO\.com|YTS\.MX|subscene\.com|moviesubtitles\.org)'
+  pattern: '(?i)(www\.)?(addic7ed\.com|tvsubtitles\.net|opensubtitles\.(com|org)|psarips\.com|podnapisi\.net|isubdb\.com|TUSUBTITULO\.com|YTS\.MX|subscene\.com|moviesubtitles\.org|my-subs\.com)'
   action: delete
 
 - name: Remove some well-known download sites
@@ -102,6 +108,11 @@ rules:
 - name: Remove Uploaded by lankafile
   type: regex
   pattern: '(?i)^Uploaded by www.lankafile.com'
+  action: delete
+
+- name: Remove VITOENCODES credit lines
+  type: regex
+  pattern: '(?i)^(Subs Sycned|Encoded) By VITOENCODES$'
   action: delete
 
 - name: Remove for subtitling services
