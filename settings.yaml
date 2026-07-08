@@ -27,12 +27,6 @@ rules:
   action: replace
   value: ""
 
-- name: Remove Episode title & Aired on
-  type: regex
-  pattern: '(?i)Episode Title:.*\nAired on: .*'
-  action: replace
-  value: ""
-
 # Ad and credit removal
 - name: Strip bare MY-SUBS.COM header glued to dialogue cue
   type: regex
@@ -93,11 +87,6 @@ rules:
 - name: Remove corrected by ...
   type: regex
   pattern: '(?i)^Correct(ions|ed) by'
-  action: delete
-
-- name: Remove sync corrected by ...
-  type: regex
-  pattern: '(?i)^Sync correct(ions|ed) by'
   action: delete
 
 - name: Remove provided by explosiveskull
