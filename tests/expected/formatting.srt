@@ -1,0 +1,24 @@
+1
+00:00:01,000 --> 00:00:03,000
+Whispering in the dark
+
+2
+00:00:04,000 --> 00:00:06,000
+Golden text
+
+3
+00:00:07,000 --> 00:00:09,000
+Sign on the wall
+
+4
+00:00:16,000 --> 00:00:18,000
+Tom & Jerry cartoons
+
+5
+00:00:19,000 --> 00:00:21,000
+Coming up next
+
+6
+00:00:22,000 --> 00:00:24,000
+Plain dialogue with bold and underline tags.
+

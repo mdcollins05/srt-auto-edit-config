@@ -1,0 +1,23 @@
+services:
+  # Automated comparison: runs each fixture in tests/input/ through
+  # srt-auto-edit with this repo's srtautoedit.settings.yaml and diffs the result
+  # against tests/expected/.
+  # Run: make test
+  test:
+    build: ../srt-auto-edit
+    entrypoint: ["/bin/bash", "/tests/run-tests.sh"]
+    working_dir: /config
+    volumes:
+      - ./tests:/tests
+      - .:/config:ro
+
+  # Regenerates the expected outputs from the current rules. Run after
+  # changing rules, review the diff, and commit to lock in the baseline.
+  # Run: make generate-expected
+  generate-expected:
+    build: ../srt-auto-edit
+    entrypoint: ["/bin/bash", "/tests/generate-expected.sh"]
+    working_dir: /config
+    volumes:
+      - ./tests:/tests
+      - .:/config:ro

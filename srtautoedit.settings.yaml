@@ -51,7 +51,7 @@ rules:
 
 - name: Remove sync and corrected by...
   type: regex
-  pattern: '(?i)\bsync(h)?(ed)?(?!\w),?( and| &)?( correct(ed|ions))?( by| -->)?(\n| )?(\w+)?'
+  pattern: '(?i)\bsync(h)?(ed)?(?!\w),?( and| &)?( correct(ed|ions))?( by| -->)(\n| )?(\w+)?'
   action: delete
 
 - name: Remove subtitles - ripped and hacked by ...
@@ -380,7 +380,7 @@ rules:
 
 - name: Remove extra spaces
   type: regex
-  pattern: '[\s]{2,}'
+  pattern: '[^\S\n]{2,}'
   action: replace
   value: ' '
 

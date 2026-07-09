@@ -1,0 +1,52 @@
+1
+00:00:01,000 --> 00:00:03,000
+Previously on
+Star Trek: Strange New Worlds
+
+2
+00:00:04,000 --> 00:00:06,000
+Previously on
+Star Trek: Strange New Worlds.
+
+3
+00:00:07,000 --> 00:00:09,000
+Previously on
+Star Trek: Strange New Worlds.
+
+4
+00:00:10,000 --> 00:00:12,000
+Welcome aboard the Enterprise.
+
+5
+00:00:13,000 --> 00:00:15,000
+The Enterprise will hold position.
+
+6
+00:00:16,000 --> 00:00:18,000
+ORTEGAS:
+Hang on!
+
+7
+00:00:19,000 --> 00:00:21,000
+Spock's ready to beam down.
+
+8
+00:00:22,000 --> 00:00:24,000
+The M'hanit is awake.
+
+9
+00:00:25,000 --> 00:00:27,000
+Contact the Cayuga.
+
+10
+00:00:28,000 --> 00:00:30,000
+The Farragut is lost.
+
+11
+00:00:31,000 --> 00:00:33,000
+The Stardiver will launch at dawn.
+
+12
+00:00:34,000 --> 00:00:36,000
+Regular bridge chatter survives.
+

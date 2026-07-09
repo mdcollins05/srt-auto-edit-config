@@ -1,0 +1,16 @@
+1
+00:00:01,000 --> 00:00:03,000
+This file should pass through untouched.
+
+2
+00:00:04,000 --> 00:00:06,000
+- Ready?
+- Always.
+
+3
+00:00:07,000 --> 00:00:09,000
+Ordinary dialogue, with commas, periods and questions?
+
+4
+00:00:10,000 --> 00:00:12,000
+♪ Row, row, row your boat ♪
