@@ -342,12 +342,6 @@ rules:
   action: replace
   value: '-'
 
-- name: Fix hyphens on same line
-  type: regex
-  pattern: ' - '
-  action: replace
-  value: '\n- '
-
 - name: Fix hyphens
   type: regex
   pattern: '[-]{3,}'
