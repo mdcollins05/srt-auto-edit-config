@@ -293,12 +293,6 @@ rules:
   action: replace
   value: ""
 
-- name: Remove ellipses at start of a line
-  type: regex
-  pattern: '^([-]?)[.]+'
-  action: replace
-  value: '\1'
-
 - name: Fix weird dual single quotes
   type: regex
   pattern: "'’"
