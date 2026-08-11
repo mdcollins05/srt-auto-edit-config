@@ -42,9 +42,20 @@ Conventions:
 The expected outputs record *current* behavior, including known bugs. When a
 rule is fixed, regenerate and the diff should show the improvement.
 
-- `Fix lack of space before opening square bracket` (`(\S)\[`) is unanchored
-  and also fires on non-SDH brackets: `array[0]` becomes `array [0]`
-  (`false-positives.srt` cue 15). Accepted — the rule catches sound cues
-  glued to dialogue (`shields down[cracking]`), the failure mode is cosmetic,
-  and a 250-file sample of the library found no legitimate `[` preceded by a
-  non-space character.
+None currently — `false-positives.srt` passes through untouched.
+
+## Surveying the library for a new rule
+
+When judging how loose a pattern is, grep the real library at
+`/mnt/media/TV` (see the mount command in `CLAUDE.md`). Paths there contain
+spaces, so build a file list and feed it with `xargs -d '\n'` — a bare
+`grep ... $(cat list)` word-splits every path and silently reports nothing:
+
+```
+find /mnt/media/TV -maxdepth 3 -name '*.srt' > /tmp/f.txt
+grep -i sdh /tmp/f.txt | shuf -n 60 > /tmp/sdh.txt   # SDH files carry the [sound cues]
+xargs -a /tmp/sdh.txt -d '\n' grep -h 'PATTERN'
+```
+
+A full sweep of all ~9400 files takes longer than a couple of minutes over
+CIFS; a 60-file SDH sample is enough to size a pattern.

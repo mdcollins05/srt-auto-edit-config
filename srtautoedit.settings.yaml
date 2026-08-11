@@ -351,11 +351,13 @@ rules:
   action: replace
   value: '] \1'
 
+# Bracket content must start with a letter (\s* allows the padded
+# "[ laughs ]" style) so subscripts like array[0] are left alone.
 - name: Fix lack of space before opening square bracket
   type: regex
-  pattern: '(\S)\['
+  pattern: '(\S)(\[\s*[A-Za-z])'
   action: replace
-  value: '\1 ['
+  value: '\1 \2'
 
 # Breaks dates and numbers separated by commas
 #- name: Fix space around comma when a large number

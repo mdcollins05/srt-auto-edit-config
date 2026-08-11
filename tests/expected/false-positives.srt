@@ -62,5 +62,4 @@ All personnel report.
 
 15
 00:00:43,000 --> 00:00:45,000
-He typed "array [0]" and hit enter.
-
+He typed "array[0]" and hit enter.
