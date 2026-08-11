@@ -42,4 +42,9 @@ Conventions:
 The expected outputs record *current* behavior, including known bugs. When a
 rule is fixed, regenerate and the diff should show the improvement.
 
-None currently — `false-positives.srt` passes through untouched.
+- `Fix lack of space before opening square bracket` (`(\S)\[`) is unanchored
+  and also fires on non-SDH brackets: `array[0]` becomes `array [0]`
+  (`false-positives.srt` cue 15). Accepted — the rule catches sound cues
+  glued to dialogue (`shields down[cracking]`), the failure mode is cosmetic,
+  and a 250-file sample of the library found no legitimate `[` preceded by a
+  non-space character.

@@ -156,6 +156,20 @@ rules:
   value: '* \1 *'
   only_if_match: '*/Supacell*'
 
+- name: Fix missing space after "Previously on" in Picard
+  type: regex
+  pattern: 'on(Star Trek: Picard)'
+  action: replace
+  value: 'on \1'
+  only_if_match: '*/Star Trek - Picard*'
+
+- name: Fix missing space before 'Zhat Vash' in Picard
+  type: regex
+  pattern: '([a-z])(Zhat Vash)'
+  action: replace
+  value: '\1 \2'
+  only_if_match: '*/Star Trek - Picard*'
+
 - name: Fix missing space before 'Enterprise' in Strange New Worlds
   type: regex
   pattern: '(\w)(Enterprise)'
@@ -317,11 +331,31 @@ rules:
   action: replace
   value: '\1\n- \2'
 
+# Anchored to the whole cue (\A .. \Z) so it only splits single-line cues --
+# a two-line cue would otherwise become three.
+- name: Split glued ellipses in single-line cues
+  type: regex
+  pattern: '\A([^\n]*)\.{4,}([A-Za-z][^\n]*?)\s*\Z'
+  action: replace
+  value: '\1...\n...\2'
+
+- name: Fix lack of space after speaker label colon
+  type: regex
+  pattern: '^([A-Z][A-Z0-9 .]*):([A-Za-z])'
+  action: replace
+  value: '\1: \2'
+
 - name: Fix lack of space after closing square bracket
   type: regex
   pattern: '](\w)'
   action: replace
   value: '] \1'
+
+- name: Fix lack of space before opening square bracket
+  type: regex
+  pattern: '(\S)\['
+  action: replace
+  value: '\1 ['
 
 # Breaks dates and numbers separated by commas
 #- name: Fix space around comma when a large number

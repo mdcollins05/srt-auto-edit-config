@@ -56,3 +56,21 @@ Important
 Two lines with trailing space
 should stay split.
 
+15
+00:00:49,000 --> 00:00:51,000
+prior to shift change. [lock buzzes]
+
+16
+00:00:52,000 --> 00:00:54,000
+Deflector shields down [cracking]
+
+17
+00:00:55,000 --> 00:00:57,000
+My father...
+...and let slip
+
+18
+00:00:58,000 --> 00:01:00,000
+CHECKPOINT SUPERVISOR: from
+the Gray Zone will result in...
+
